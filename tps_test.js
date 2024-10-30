@@ -1,16 +1,16 @@
-import http from 'k6/http';
+import http from "k6/http";
 
 export const options = {
-    scenarios: {
-        constant_request_rate: {
-            executor: 'constant-arrival-rate',
-            rate: 10000,
-            timeUnit: '1s',
-            duration: '5s',
-            preAllocatedVUs: 100,
-            maxVUs: 100,
-        },
+  scenarios: {
+    constant_request_rate: {
+      executor: "constant-arrival-rate",
+      rate: 10000,
+      timeUnit: "1s",
+      duration: "5s",
+      preAllocatedVUs: 100,
+      maxVUs: 100,
     },
+  },
 };
 
 // export default function () {
@@ -58,13 +58,12 @@ export const options = {
 // }
 
 export default function () {
-    const response = http.get('http://192.168.20.16:13004/api/log/native',{
-    // const response = http.get('http://192.168.20.61:8080/api/user?page=1&take=10&searchText=&searchColumn=&orderColumn=created_at&orderBy=DESC',{
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
-    console.log(response.status, response.body);
+  const response = http.get("http://192.168.20.61:13004/api/log/native", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  console.log(response.status, response.body);
 }
 
 // export default function () {
